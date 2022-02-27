@@ -7,7 +7,7 @@ import { UserModule } from './modules/user.module';
 @Module({
   imports: [
     ConfigModule.forRoot({}),
-    MongooseModule.forRoot("mongodb://localhost/communere", {
+    MongooseModule.forRoot('mongodb://localhost/communere', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }),
@@ -17,4 +17,4 @@ import { UserModule } from './modules/user.module';
   controllers: [],
   providers: [],
 })
-export class AppModule { }
+export class AppModule {}
