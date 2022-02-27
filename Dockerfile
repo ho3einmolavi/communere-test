@@ -3,7 +3,7 @@ FROM node:16.14.0-alpine3.14
 RUN apk update
 RUN apk upgrade
 
-ENV API_ROOT /kittyapp/api
+ENV API_ROOT /app
 
 WORKDIR ${API_ROOT}
 
@@ -14,7 +14,7 @@ RUN npm install
 RUN npm install pm2 -g
 
 COPY ./src ./src
-COPY ./prod.env ./.env
+# COPY ./prod.env ./.env
 
 RUN npm run build
 

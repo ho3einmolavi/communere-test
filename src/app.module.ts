@@ -1,10 +1,20 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+import { ItemModule } from './modules/item.module';
+import { UserModule } from './modules/user.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({}),
+    MongooseModule.forRoot("mongodb://localhost/communere", {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }),
+    ItemModule,
+    UserModule,
+  ],
+  controllers: [],
+  providers: [],
 })
-export class AppModule {}
+export class AppModule { }
