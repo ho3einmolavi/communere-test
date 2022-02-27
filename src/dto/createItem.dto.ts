@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsDateString } from 'class-validator';
 
 export class CreateItemDto {
   @IsNotEmpty()
@@ -11,6 +11,7 @@ export class CreateItemDto {
   description: string;
 
   @IsOptional()
-  @ApiProperty({ type: Number, description: 'status' })
-  due_date: string;
+  @IsDateString()
+  @ApiProperty({ type: Date, description: 'due date' })
+  due_date: Date;
 }
