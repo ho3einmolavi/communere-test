@@ -11,7 +11,7 @@ import { Model } from 'mongoose';
 import { IUser } from 'src/schemas/interfaces/user.interface';
 
 @Injectable()
-export class BuyerAuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
   constructor(@InjectModel('User') private readonly UserModel: Model<IUser>) {}
   async canActivate(context: ExecutionContext) {
     const request = context.switchToHttp().getRequest();

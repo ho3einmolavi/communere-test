@@ -7,7 +7,7 @@ import { UserModule } from './modules/user.module';
 @Module({
   imports: [
     ConfigModule.forRoot({}),
-    MongooseModule.forRoot('mongodb://localhost/communere', {
+    MongooseModule.forRoot(`${process.env.DB_HOST}/${process.env.DB_NAME}`, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }),

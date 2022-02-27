@@ -13,7 +13,19 @@ export class UserService {
   ) {}
 
   async signUp(userSignupDto: UserSignupDto): Promise<string> {
-    userSignupDto.password = await hashPassword(userSignupDto.password);
+    const { username, password } = userSignupDto;
+    const existingUser = await this.userComponent.findUser({
+      username,
+    });
+
+    if (existingUser) {
+      throw new HttpException(
+        'Username already in use',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
+    userSignupDto.password = await hashPassword(password);
     const user = await this.userComponent.createUser(userSignupDto);
     return await this.authService.signAccessToken(user.username);
   }

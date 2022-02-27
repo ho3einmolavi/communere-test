@@ -12,7 +12,14 @@ export const ItemSchema = new mongoose.Schema(
       default: ItemStatus.TODO,
       required: true,
     },
-    due_date: String,
+    due_date: Date,
   },
   { timestamps: true },
 );
+
+ItemSchema.methods.toJSON = function () {
+  const obj = this.toObject();
+  delete obj.__v;
+  delete obj.user_id;
+  return obj;
+};
