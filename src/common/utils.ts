@@ -1,6 +1,6 @@
 import * as bcrypt from 'bcrypt';
 
-export function response(data: any, message: string) {
+export function response(data: any, message: string = 'success') {
   return {
     data,
     message,
