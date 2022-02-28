@@ -6,6 +6,7 @@ import {
   Post,
 } from '@nestjs/common';
 import {
+  ApiBadRequestResponse,
   ApiBody,
   ApiCreatedResponse,
   ApiOperation,
@@ -23,6 +24,7 @@ export class UserController {
 
   @Post('/signup')
   @ApiCreatedResponse({ description: 'user signed up' })
+  @ApiBadRequestResponse({ description: 'validation error' })
   @ApiBody({
     type: UserSignupDto,
     description: 'sign up user body',
@@ -43,6 +45,7 @@ export class UserController {
 
   @Post('/signin')
   @ApiCreatedResponse({ description: 'user signed in' })
+  @ApiBadRequestResponse({ description: 'validation error' })
   @ApiBody({
     type: UserSigninDto,
     description: 'sign in user body',

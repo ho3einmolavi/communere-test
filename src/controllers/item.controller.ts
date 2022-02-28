@@ -26,6 +26,7 @@ import {
   ApiHeader,
   ApiUnauthorizedResponse,
   ApiForbiddenResponse,
+  ApiBadRequestResponse,
 } from '@nestjs/swagger';
 import { response } from 'src/common/utils';
 import { ItemService } from '../services/item.service';
@@ -43,6 +44,7 @@ export class ItemController {
     description:
       'Unauthorized error if there is no sent token or sent invalid token',
   })
+  @ApiBadRequestResponse({ description: 'validation error' })
   @ApiHeader({
     name: 'authorization',
     description: 'jwt access token for users. format: Bearer {token}',
@@ -77,6 +79,7 @@ export class ItemController {
     description:
       'Unauthorized error if there is no sent token or sent invalid token',
   })
+  @ApiBadRequestResponse({ description: 'validation error' })
   @ApiHeader({
     name: 'authorization',
     description: 'jwt access token for users. format: Bearer {token}',
@@ -119,6 +122,7 @@ export class ItemController {
 
   @Post('/update-status/:item_id')
   @ApiOkResponse({ description: 'item status updated' })
+  @ApiBadRequestResponse({ description: 'validation error' })
   @ApiUnauthorizedResponse({
     description:
       'Unauthorized error if there is no sent token or sent invalid token',
@@ -165,6 +169,7 @@ export class ItemController {
 
   @Post('/update-due-date/:item_id')
   @ApiOkResponse({ description: 'item due date updated' })
+  @ApiBadRequestResponse({ description: 'validation error' })
   @ApiUnauthorizedResponse({
     description:
       'Unauthorized error if there is no sent token or sent invalid token',
@@ -211,6 +216,7 @@ export class ItemController {
 
   @Delete('/delete/:item_id')
   @ApiOkResponse({ description: 'item deleted' })
+  @ApiBadRequestResponse({ description: 'validation error' })
   @ApiUnauthorizedResponse({
     description:
       'Unauthorized error if there is no sent token or sent invalid token',
