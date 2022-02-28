@@ -30,7 +30,7 @@ export class ItemService {
     user: IUser,
   ) {
     const item = await this.itemComponent.findOneItemById(item_id);
-    if(!item) {
+    if (!item) {
       throw new HttpException('Item not found', HttpStatus.NOT_FOUND);
     }
     isUserOwnedTheItem(item, user);
@@ -43,7 +43,7 @@ export class ItemService {
     user: IUser,
   ) {
     const item = await this.itemComponent.findOneItemById(item_id);
-    if(!item) {
+    if (!item) {
       throw new HttpException('Item not found', HttpStatus.NOT_FOUND);
     }
     isUserOwnedTheItem(item, user);
@@ -52,7 +52,7 @@ export class ItemService {
 
   async deleteItem(item_id: Types.ObjectId, user: IUser) {
     const item = await this.itemComponent.findOneItemById(item_id);
-    if(!item) {
+    if (!item) {
       throw new HttpException('Item not found', HttpStatus.NOT_FOUND);
     }
     isUserOwnedTheItem(item, user);

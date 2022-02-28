@@ -25,6 +25,7 @@ import {
   ApiOperation,
   ApiHeader,
   ApiUnauthorizedResponse,
+  ApiForbiddenResponse,
 } from '@nestjs/swagger';
 import { response } from 'src/common/utils';
 import { ItemService } from '../services/item.service';
@@ -34,7 +35,7 @@ import { Types } from 'mongoose';
 @ApiTags('api/item')
 @Controller('api/item')
 export class ItemController {
-  constructor(private readonly itemService: ItemService) {}
+  constructor(private readonly itemService: ItemService) { }
 
   @Post('/')
   @ApiCreatedResponse({ description: 'item created' })
@@ -122,6 +123,10 @@ export class ItemController {
     description:
       'Unauthorized error if there is no sent token or sent invalid token',
   })
+  @ApiForbiddenResponse({
+    description:
+      'when the user trying to update an item that is not created by the user',
+  })
   @ApiHeader({
     name: 'authorization',
     description: 'jwt access token for users. format: Bearer {token}',
@@ -164,6 +169,10 @@ export class ItemController {
     description:
       'Unauthorized error if there is no sent token or sent invalid token',
   })
+  @ApiForbiddenResponse({
+    description:
+      'when the user trying to update an item that is not created by the user',
+  })
   @ApiHeader({
     name: 'authorization',
     description: 'jwt access token for users. format: Bearer {token}',
@@ -205,6 +214,10 @@ export class ItemController {
   @ApiUnauthorizedResponse({
     description:
       'Unauthorized error if there is no sent token or sent invalid token',
+  })
+  @ApiForbiddenResponse({
+    description:
+      'when the user trying to update an item that is not created by the user',
   })
   @ApiHeader({
     name: 'authorization',
