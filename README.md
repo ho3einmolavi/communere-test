@@ -7,6 +7,7 @@ For deployment I used [PM2](https://pm2.keymetrics.io/) which is a daemon proces
 ## How to run the application
 
 * First clone the repository
+* `cd communere-test/`
 * Run `docker-compose up -d --build`
 
 Now the application is up and running running on the port 80.
