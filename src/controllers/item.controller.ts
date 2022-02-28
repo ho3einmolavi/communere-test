@@ -125,7 +125,7 @@ export class ItemController {
   })
   @ApiForbiddenResponse({
     description:
-      'when the user trying to update an item that is not created by the user',
+      'When the user tries to update an item that was not created by him/her',
   })
   @ApiHeader({
     name: 'authorization',
@@ -171,7 +171,7 @@ export class ItemController {
   })
   @ApiForbiddenResponse({
     description:
-      'when the user trying to update an item that is not created by the user',
+      'When the user tries to update an item that was not created by him/her',
   })
   @ApiHeader({
     name: 'authorization',
@@ -217,7 +217,7 @@ export class ItemController {
   })
   @ApiForbiddenResponse({
     description:
-      'when the user trying to update an item that is not created by the user',
+      'When the user tries to update an item that was not created by him/her',
   })
   @ApiHeader({
     name: 'authorization',
