@@ -45,6 +45,11 @@ export class ItemController {
     type: CreateItemDto,
     description: 'create item body',
   })
+  @ApiOperation({
+    summary: 'create item',
+    description:
+      'create item for user based on title, description and due date. only title is required',
+  })
   @UseGuards(AuthGuard)
   @HttpCode(201)
   async createItem(@Body() createItemDto: CreateItemDto, @Req() request: any) {
@@ -116,6 +121,10 @@ export class ItemController {
     name: 'item_id',
     description: 'item id',
   })
+  @ApiOperation({
+    summary: 'update item status',
+    description: 'update item status. it is possible to update status only',
+  })
   @UseGuards(AuthGuard)
   @HttpCode(200)
   async updateItemStatus(
@@ -149,6 +158,10 @@ export class ItemController {
   @ApiParam({
     name: 'item_id',
     description: 'item id',
+  })
+  @ApiOperation({
+    summary: 'update item due date',
+    description: 'update item due date. it is possible to update due date only',
   })
   @UseGuards(AuthGuard)
   @HttpCode(200)

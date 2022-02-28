@@ -4,7 +4,7 @@ import { IsNotEmpty, IsEnum } from 'class-validator';
 
 export class UpdateItemStatusDto {
   @IsNotEmpty()
-  @ApiProperty({ type: Number, description: 'status' })
+  @ApiProperty({ type: Number, description: 'status', required: true })
   @IsEnum(Object.values(ItemStatus).filter((el) => typeof el === 'number'), {
     message: `status must be one of the following: ${Object.values(
       ItemStatus,

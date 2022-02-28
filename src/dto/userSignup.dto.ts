@@ -6,11 +6,11 @@ export class UserSignupDto {
   @MinLength(3, {
     message: 'username must be at least 3 characters long',
   })
-  @ApiProperty({ type: String, description: 'username' })
+  @ApiProperty({ type: String, description: 'username', required: true })
   username: string;
 
   @IsNotEmpty()
-  @ApiProperty({ type: String, description: 'Password' })
+  @ApiProperty({ type: String, description: 'Password', required: true })
   @MinLength(6, {
     message: 'Password must be at least 6 characters long',
   })

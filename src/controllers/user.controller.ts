@@ -5,7 +5,12 @@ import {
   HttpException,
   Post,
 } from '@nestjs/common';
-import { ApiBody, ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBody,
+  ApiCreatedResponse,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 import { response } from 'src/common/utils';
 import { UserSigninDto } from 'src/dto/userSignin.dto';
 import { UserSignupDto } from 'src/dto/userSignup.dto';
@@ -22,6 +27,10 @@ export class UserController {
     type: UserSignupDto,
     description: 'sign up user body',
   })
+  @ApiOperation({
+    summary: 'sign up',
+    description: 'sign up user based on username and password',
+  })
   @HttpCode(201)
   async signUp(@Body() userSignupDto: UserSignupDto) {
     try {
@@ -37,6 +46,10 @@ export class UserController {
   @ApiBody({
     type: UserSigninDto,
     description: 'sign in user body',
+  })
+  @ApiOperation({
+    summary: 'sign in',
+    description: 'sign in user based on username and password',
   })
   @HttpCode(200)
   async signIn(@Body() userSigninDto: UserSigninDto) {

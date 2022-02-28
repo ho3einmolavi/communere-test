@@ -3,7 +3,7 @@ import { IsNotEmpty, IsDateString } from 'class-validator';
 
 export class UpdateItemDueDateDto {
   @IsNotEmpty()
-  @ApiProperty({ type: Date, description: 'item due date' })
+  @ApiProperty({ type: Date, description: 'item due date', required: true })
   @IsDateString()
   due_date: Date;
 }
