@@ -1,7 +1,7 @@
 import { ItemStatus } from './../common/enums';
 import { IUser } from './../schemas/interfaces/user.interface';
 import { ItemComponent } from './../components/item.component';
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateItemDto } from 'src/dto/createItem.dto';
 import { Types } from 'mongoose';
 import { isUserOwnedTheItem } from './helpers/helpers';
@@ -30,6 +30,9 @@ export class ItemService {
     user: IUser,
   ) {
     const item = await this.itemComponent.findOneItemById(item_id);
+    if(!item) {
+      throw new HttpException('Item not found', HttpStatus.NOT_FOUND);
+    }
     isUserOwnedTheItem(item, user);
     return await this.itemComponent.updateOneItemById(item_id, { status });
   }
@@ -40,12 +43,18 @@ export class ItemService {
     user: IUser,
   ) {
     const item = await this.itemComponent.findOneItemById(item_id);
+    if(!item) {
+      throw new HttpException('Item not found', HttpStatus.NOT_FOUND);
+    }
     isUserOwnedTheItem(item, user);
     return await this.itemComponent.updateOneItemById(item_id, { due_date });
   }
 
   async deleteItem(item_id: Types.ObjectId, user: IUser) {
     const item = await this.itemComponent.findOneItemById(item_id);
+    if(!item) {
+      throw new HttpException('Item not found', HttpStatus.NOT_FOUND);
+    }
     isUserOwnedTheItem(item, user);
     return await this.itemComponent.deleteOneItemById(item_id);
   }

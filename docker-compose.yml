@@ -9,7 +9,7 @@ services:
       - PORT=3000
       - ACCESS_TOKEN_SECRET_KEY=access_token_secret_key
       - DB_NAME=communere
-      - DB_HOST=mongo:27017
+      - DB_HOST=mongodb://mongo:27017
     ports:
       - 80:3000
     volumes:
