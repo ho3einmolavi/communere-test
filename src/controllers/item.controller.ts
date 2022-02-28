@@ -24,6 +24,7 @@ import {
   ApiParam,
   ApiOperation,
   ApiHeader,
+  ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { response } from 'src/common/utils';
 import { ItemService } from '../services/item.service';
@@ -37,6 +38,9 @@ export class ItemController {
 
   @Post('/')
   @ApiCreatedResponse({ description: 'item created' })
+  @ApiUnauthorizedResponse({
+    description: 'Unauthorized error if there is no sent token or sent invalid token',
+  })
   @ApiHeader({
     name: 'authorization',
     description: 'jwt access token for users. format: Bearer {token}',
@@ -67,6 +71,9 @@ export class ItemController {
 
   @Get('/filter')
   @ApiOkResponse({ description: 'success' })
+  @ApiUnauthorizedResponse({
+    description: 'Unauthorized error if there is no sent token or sent invalid token',
+  })
   @ApiHeader({
     name: 'authorization',
     description: 'jwt access token for users. format: Bearer {token}',
@@ -109,6 +116,9 @@ export class ItemController {
 
   @Post('/update-status/:item_id')
   @ApiOkResponse({ description: 'item status updated' })
+  @ApiUnauthorizedResponse({
+    description: 'Unauthorized error if there is no sent token or sent invalid token',
+  })
   @ApiHeader({
     name: 'authorization',
     description: 'jwt access token for users. format: Bearer {token}',
@@ -147,6 +157,9 @@ export class ItemController {
 
   @Post('/update-due-date/:item_id')
   @ApiOkResponse({ description: 'item due date updated' })
+  @ApiUnauthorizedResponse({
+    description: 'Unauthorized error if there is no sent token or sent invalid token',
+  })
   @ApiHeader({
     name: 'authorization',
     description: 'jwt access token for users. format: Bearer {token}',
@@ -186,6 +199,9 @@ export class ItemController {
 
   @Delete('/delete/:item_id')
   @ApiOkResponse({ description: 'item deleted' })
+  @ApiUnauthorizedResponse({
+    description: 'Unauthorized error if there is no sent token or sent invalid token',
+  })
   @ApiHeader({
     name: 'authorization',
     description: 'jwt access token for users. format: Bearer {token}',
