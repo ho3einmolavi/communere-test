@@ -18,6 +18,6 @@ COPY ./src ./src
 
 RUN npm run build
 
-EXPOSE 8080
+# EXPOSE 8080
 
 CMD ["pm2-runtime", "dist/main.js"]

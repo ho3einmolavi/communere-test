@@ -2,13 +2,21 @@ version: '3'
 services:
   node:
     restart: always
+    depends_on:
+      - mongo
     build: .
+    environment:
+      - PORT=3000
+      - ACCESS_TOKEN_SECRET_KEY=access_token_secret_key
+      - DB_NAME=communere
+      - DB_HOST=mongo:27017
     ports:
       - 80:3000
     volumes:
       - ./:/code
   mongo:
     image: mongo
+    restart: always
     ports:
       - 27017:27017
     volumes:
