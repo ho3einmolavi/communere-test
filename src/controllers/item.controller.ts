@@ -5,6 +5,7 @@ import { AuthGuard } from './../guards/authentication.guard';
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   HttpException,
@@ -32,7 +33,7 @@ import { Types } from 'mongoose';
 @ApiTags('api/item')
 @Controller('api/item')
 export class ItemController {
-  constructor(private readonly itemService: ItemService) {}
+  constructor(private readonly itemService: ItemService) { }
 
   @Post('/')
   @ApiCreatedResponse({ description: 'item created' })
@@ -177,6 +178,36 @@ export class ItemController {
         request.user,
       );
       return response(null, 'item due date updated');
+    } catch (error) {
+      throw new HttpException(error.message, error.status || 500);
+    }
+  }
+
+
+  @Delete('/delete/:item_id')
+  @ApiOkResponse({ description: 'item deleted' })
+  @ApiHeader({
+    name: 'authorization',
+    description: 'jwt access token for users. format: Bearer {token}',
+    required: true,
+  })
+  @ApiParam({
+    name: 'item_id',
+    description: 'item id',
+  })
+  @ApiOperation({
+    summary: 'delete item',
+    description: 'this api deletes an item',
+  })
+  @UseGuards(AuthGuard)
+  @HttpCode(200)
+  async deleteItem(
+    @Param('item_id') item_id: Types.ObjectId,
+    @Req() request: any,
+  ) {
+    try {
+      await this.itemService.deleteItem(item_id, request.user);
+      return response(null, 'item deleted');
     } catch (error) {
       throw new HttpException(error.message, error.status || 500);
     }

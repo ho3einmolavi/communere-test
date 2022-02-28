@@ -26,4 +26,9 @@ export class ItemComponent {
     await this.ItemModel.updateOne({ _id: id }, item_fields);
     return true;
   }
+
+  async deleteOneItemById(id: Types.ObjectId): Promise<Boolean> {
+    await this.ItemModel.deleteOne({ _id: id });
+    return true;
+  }
 }
