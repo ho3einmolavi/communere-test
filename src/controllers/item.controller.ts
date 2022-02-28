@@ -79,7 +79,6 @@ export class ItemController {
     description:
       'Unauthorized error if there is no sent token or sent invalid token',
   })
-  @ApiBadRequestResponse({ description: 'validation error' })
   @ApiHeader({
     name: 'authorization',
     description: 'jwt access token for users. format: Bearer {token}',
@@ -223,7 +222,7 @@ export class ItemController {
   })
   @ApiForbiddenResponse({
     description:
-      'When the user tries to update an item that was not created by him/her',
+      'When the user tries to delete an item that was not created by him/her',
   })
   @ApiHeader({
     name: 'authorization',
