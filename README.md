@@ -6,4 +6,11 @@ For deployment I used [PM2](https://pm2.keymetrics.io/) which is a daemon proces
 
 ## How to run the application
 
-First clone the repository, then create a .env file and initialize the variables defined in the .env.example file.
+* First clone the repository
+* Run `docker-compose up -d --build`
+
+Now the application is up and running running on the port 80.
+
+## API Documentation
+
+Just Open the `/api` path (http://localhost/api) on your browser to see the swageer UI.
