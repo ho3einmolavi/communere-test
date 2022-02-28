@@ -33,4 +33,14 @@ export class ItemService {
     isUserOwnedTheItem(item, user);
     return await this.itemComponent.updateOneItemById(item_id, { status });
   }
+
+  async updateItemDueDate(
+    item_id: Types.ObjectId,
+    due_date: Date,
+    user: IUser,
+  ) {
+    const item = await this.itemComponent.findOneItemById(item_id);
+    isUserOwnedTheItem(item, user);
+    return await this.itemComponent.updateOneItemById(item_id, { due_date });
+  }
 }
