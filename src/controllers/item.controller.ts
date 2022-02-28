@@ -34,12 +34,13 @@ import { Types } from 'mongoose';
 @ApiTags('api/item')
 @Controller('api/item')
 export class ItemController {
-  constructor(private readonly itemService: ItemService) { }
+  constructor(private readonly itemService: ItemService) {}
 
   @Post('/')
   @ApiCreatedResponse({ description: 'item created' })
   @ApiUnauthorizedResponse({
-    description: 'Unauthorized error if there is no sent token or sent invalid token',
+    description:
+      'Unauthorized error if there is no sent token or sent invalid token',
   })
   @ApiHeader({
     name: 'authorization',
@@ -72,7 +73,8 @@ export class ItemController {
   @Get('/filter')
   @ApiOkResponse({ description: 'success' })
   @ApiUnauthorizedResponse({
-    description: 'Unauthorized error if there is no sent token or sent invalid token',
+    description:
+      'Unauthorized error if there is no sent token or sent invalid token',
   })
   @ApiHeader({
     name: 'authorization',
@@ -117,7 +119,8 @@ export class ItemController {
   @Post('/update-status/:item_id')
   @ApiOkResponse({ description: 'item status updated' })
   @ApiUnauthorizedResponse({
-    description: 'Unauthorized error if there is no sent token or sent invalid token',
+    description:
+      'Unauthorized error if there is no sent token or sent invalid token',
   })
   @ApiHeader({
     name: 'authorization',
@@ -158,7 +161,8 @@ export class ItemController {
   @Post('/update-due-date/:item_id')
   @ApiOkResponse({ description: 'item due date updated' })
   @ApiUnauthorizedResponse({
-    description: 'Unauthorized error if there is no sent token or sent invalid token',
+    description:
+      'Unauthorized error if there is no sent token or sent invalid token',
   })
   @ApiHeader({
     name: 'authorization',
@@ -196,11 +200,11 @@ export class ItemController {
     }
   }
 
-
   @Delete('/delete/:item_id')
   @ApiOkResponse({ description: 'item deleted' })
   @ApiUnauthorizedResponse({
-    description: 'Unauthorized error if there is no sent token or sent invalid token',
+    description:
+      'Unauthorized error if there is no sent token or sent invalid token',
   })
   @ApiHeader({
     name: 'authorization',
