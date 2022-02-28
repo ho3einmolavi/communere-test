@@ -13,4 +13,8 @@ Now the application is up and running running on the port 80.
 
 ## API Documentation
 
-Just Open the `/api` path (http://localhost/api) on your browser to see the swageer UI.
+Just Open the `/api` path (<http://localhost/api>) on your browser to see the swageer UI.
+
+## Health Check
+
+Just Open the `/health` (<http://localhost/health>) to see the app health results.
