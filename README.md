@@ -10,7 +10,7 @@ For deployment I used [PM2](https://pm2.keymetrics.io/) which is a daemon proces
 * `cd communere-test/`
 * Run `docker-compose up -d --build`
 
-Now the application is up and running on the port 80.
+Now the application is up and running on port 80.
 
 ## API Documentation
 
